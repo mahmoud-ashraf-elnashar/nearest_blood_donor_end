@@ -61,7 +61,7 @@ def predict(l1: float, l2: float,curr: int,BOO:str):
     output_knnn = df_copy[df_copy['y'] == result]
     print (output_knnn)
 
-    if BOO == "W":
+    if BOO == "+A":
          output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "B+", "AB-"])]
     elif BOO == "B+":
          output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "A-", "A+", "AB-"])]
