@@ -61,7 +61,7 @@ def predict(l1: float, l2: float,curr: int,BT:str,DT: int):
     output_knnn = df_copy[df_copy['y'] == result]
     
 
-    if donation_type ==2:
+    if DT ==2:
         if BT == "AP" or BT == "A-" :
             output_knn = output_knnn[~output_knnn['blood type'].isin(["O-", "B-", "B+", "O+"])]
         elif BT == "BP"or BT == "B-" :
