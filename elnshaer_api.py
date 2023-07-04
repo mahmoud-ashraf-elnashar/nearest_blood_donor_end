@@ -93,7 +93,6 @@ def predict(l1: float, l2: float,curr: int,BT:str):
     return  the_nearst_list[curr]
       
 
-    return  the_nearst_list[curr]
 
 
 
