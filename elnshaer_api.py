@@ -49,7 +49,7 @@ class MyObject:
 
 # Define the prediction endpoint
 @app.post("/prediction")
-def predict(l1: float, l2: float,curr: int,BT:str,donation_type: str):
+def predict(l1: float, l2: float,curr: int,BT:str,DT: int):
     # Make a prediction using the KNN model
     result=loadded_model.predict(np.array([l1,l2]).reshape(1, -1))
     result=loadded_encoder.inverse_transform([result])[0]
@@ -61,7 +61,7 @@ def predict(l1: float, l2: float,curr: int,BT:str,donation_type: str):
     output_knnn = df_copy[df_copy['y'] == result]
     
 
-    if donation_type =="plasma":
+    if donation_type ==2:
         if BT == "AP" or BT == "A-" :
             output_knn = output_knnn[~output_knnn['blood type'].isin(["O-", "B-", "B+", "O+"])]
         elif BT == "BP"or BT == "B-" :
