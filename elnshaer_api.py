@@ -61,15 +61,15 @@ def predict(l1: float, l2: float,curr: int,BOO:str):
     output_knnn = df_copy[df_copy['y'] == result]
     print (output_knnn)
 
-    if BOO == "+A":
+    if BOO == "A'+'":
          output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "B+", "AB-"])]
-    elif BOO == "B+":
+    elif BOO == "B'+'":
          output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "A-", "A+", "AB-"])]
     elif BOO == "A-":
          output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "A+", "AB-", "O+", "B+"])]
     elif BOO == "B-":
          output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "A-", "A+", "AB-", "O+", "B+"])]
-    elif BOO == "O+":
+    elif BOO == "O'+'":
          output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "A+", "AB-", "A-", "B+"])]
     elif BOO == "O-":
          output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "A+", "AB-", "A-", "B+", "O+"])]
