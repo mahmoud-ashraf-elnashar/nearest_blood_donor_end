@@ -49,7 +49,7 @@ class MyObject:
 
 # Define the prediction endpoint
 @app.post("/prediction")
-def predict(l1: float, l2: float,curr: int,BT:str):
+def predict(l1: float, l2: float,curr: int,BT:str,donation_type: str):
     # Make a prediction using the KNN model
     result=loadded_model.predict(np.array([l1,l2]).reshape(1, -1))
     result=loadded_encoder.inverse_transform([result])[0]
@@ -61,22 +61,34 @@ def predict(l1: float, l2: float,curr: int,BT:str):
     output_knnn = df_copy[df_copy['y'] == result]
     
 
-    if BT == "AP":
-         output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "B+", "AB-"])]
-    elif BT == "BP":
-         output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "A-", "A+", "AB-"])]
-    elif BT == "A-":
-         output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "A+", "AB-", "O+", "B+"])]
-    elif BT == "B-":
-         output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "A-", "A+", "AB-", "O+", "B+"])]
-    elif BT == "OP":
-         output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "A+", "AB-", "A-", "B+"])]
-    elif BT == "O-":
-         output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "A+", "AB-", "A-", "B+", "O+"])]
-    elif BT == "AB-":
-         output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "A+", "O+", "B+"])]
-    else:
-         output_knn = output_knnn
+    if donation_type =="plasma":
+        if BT == "AP" or BT == "A-" :
+            output_knn = output_knnn[~output_knnn['blood type'].isin(["O-", "B-", "B+", "O+"])]
+        elif BT == "BP"or BT == "B-" :
+            output_knn = output_knnn[~output_knnn['blood type'].isin(["O+", "A-", "A+", "O-"])]
+        elif BT == "AB-" or BT == "ABP":
+            output_knn = output_knnn[~output_knnn['blood type'].isin(["B+", "A+", "O+", "B-","O-","A-"])]
+        else:
+            output_knn = output_knnn
+
+    else :
+        if BT == "AP":
+            output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "B+", "AB-"])]
+        elif BT == "BP":
+            output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "A-", "A+", "AB-"])]
+        elif BT == "A-":
+            output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "A+", "AB-", "O+", "B+"])]
+        elif BT == "B-":
+            output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "A-", "A+", "AB-", "O+", "B+"])]
+        elif BT == "OP":
+            output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "A+", "AB-", "A-", "B+"])]
+        elif BT == "O-":
+            output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "A+", "AB-", "A-", "B+", "O+"])]
+        elif BT == "AB-":
+            output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "A+", "O+", "B+"])]
+        else:
+            output_knn = output_knnn
+     
 
     
     output_knn['diff'] = ((abs(output_knn['x1'] - l1) + abs(output_knn['x2'] - l2))*60)*1.1515
