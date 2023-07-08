@@ -72,15 +72,15 @@ def predict(l1: float, l2: float,curr: int,BT:str,DT: int):
             output_knn = output_knnn
 
     else :
-        if BT == "A"+str(+):
+        if BT =="A" + "+":
             output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "B+", "AB-"])]
-        elif BT == "BP":
+        elif "B" + "+":
             output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "A-", "A+", "AB-"])]
         elif BT == "A-":
             output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "A+", "AB-", "O+", "B+"])]
         elif BT == "B-":
             output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "A-", "A+", "AB-", "O+", "B+"])]
-        elif BT == "OP":
+        elif "O" + "+":
             output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "A+", "AB-", "A-", "B+"])]
         elif BT == "O-":
             output_knn = output_knnn[~output_knnn['blood type'].isin(["AB+", "B-", "A+", "AB-", "A-", "B+", "O+"])]
