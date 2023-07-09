@@ -92,12 +92,13 @@ def predict(l1: float, l2: float,curr: int,BT:str,DT: int):
 
     
     output_knn['diff'] = ((abs(output_knn['x1'] - l1) + abs(output_knn['x2'] - l2))*60)*1.1515
+     output_knn['diff'] = round(output_knn['diff'], 2)
     sorted_df = output_knn.sort_values('diff')
     the_nearst_list=[]
     for index in range(0,len(sorted_df['x1'])):
       nearest_index = sorted_df.index[index]
       nearest_value=list(sorted_df.iloc[index])
-      obj = MyObject(nearest_value[0], nearest_value[1], nearest_value[2],nearest_value[3],nearest_value[4],nearest_value[5],nearest_value[6],nearest_value[7],nearest_value[8]) 
+      obj = MyObject(nearest_value[0], nearest_value[1], nearest_value[2],nearest_value[3],nearest_value[4],nearest_value[5],nearest_value[6],nearest_value[7],nearest_value[8]+"km") 
       the_nearst_list.append(obj)
       
 
