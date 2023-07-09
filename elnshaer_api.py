@@ -92,7 +92,7 @@ def predict(l1: float, l2: float,curr: int,BT:str,DT: int):
 
     
     output_knn['diff'] = ((abs(output_knn['x1'] - l1) + abs(output_knn['x2'] - l2))*60)*1.1515
-     output_knn['diff'] = round(output_knn['diff'], 2)
+    output_knn['diff'] = round(output_knn['diff'], 2)
     sorted_df = output_knn.sort_values('diff')
     the_nearst_list=[]
     for index in range(0,len(sorted_df['x1'])):
