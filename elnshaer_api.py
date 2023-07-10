@@ -35,11 +35,15 @@ app.add_middleware(
 )
 
 # Load the KNN model from disk
-with open('knn_model (2).sav', 'rb') as file:
-    loadded_model = pickle.load(file)
+#with open('knn_model (2).sav', 'rb') as file:
+   # loadded_model = pickle.load(file)
 # Load the Label Encoder from the saved file
-with open('label_encoder.pkl', 'rb') as file:
-    loadded_encoder = pickle.load(file)
+#with open('label_encoder.pkl', 'rb') as file:
+  #  loadded_encoder = pickle.load(file)
+loadded_model = pickle.load(open('knn_model (2).sav', 'rb'))
+loadded_encoder = pickle.load(open('label_encoder.pkl', 'rb'))
+
+
 
 from sklearn import preprocessing
   
