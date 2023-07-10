@@ -19,6 +19,21 @@ import pickle
 
 app = FastAPI()
 
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+    "http://localhost:4200",
+    # قائمة بعناوين المصادر المسموح لها بالوصول
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # Load the KNN model from disk
 with open('knn_model (2).sav', 'rb') as file:
     loadded_model = pickle.load(file)
