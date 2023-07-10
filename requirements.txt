@@ -1,6 +1,6 @@
 fastapi
 uvicorn
 pickle5
-scikit-learn
+scikit-learn==1.0.1
 numpy
 pandas
